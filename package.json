@@ -1,0 +1,25 @@
+{
+  "name": "frontend2",
+  "version": "1.0.0",
+  "description": "frontend 2 resit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "progressive",
+    "enhancement"
+  ],
+  "author": "Marcel Fleuren",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "nodemon": "^2.0.2",
+    "path": "^0.12.7"
+  }
+}
