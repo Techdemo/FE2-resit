@@ -20,6 +20,8 @@ Router.post('/', (req, res) => {
     return meals
   })
   .then((meals) => {
+
+
     res.render('home', {
       layout: 'default',
       mealList: meals,

@@ -30,8 +30,10 @@ app
     layoutsDir: __dirname +
       '/views/layouts/',
     partialsDir: __dirname +
-      '/views/partials/'
-  }))
+      '/views/partials/',
+    helpers: require('./helpers/handlebars-helper')
+  }));
+
 
 app
   .get('/', index)
