@@ -2,9 +2,6 @@ function myFunction() {
   event.preventDefault();
   const cardList = document.getElementById('cardList')
 
-
-
-
   async function fetchMeal(query){
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${query}`)
     let data = await response.json()
