@@ -1,0 +1,41 @@
+<form class="filter-form" action="/filter" method="POST">
+{{!-- <label><input type="checkbox"> Some option</label> --}}
+  <fieldset class="filter-form-fieldset">
+    <label for="ingredients">
+      <input type="checkbox" id="toggle" class="visually-hidden" name="ingredients" value="Breadcrumbs">
+      Breadcrumbs
+    </label>
+  </fieldset>
+  <fieldset class="filter-form-fieldset">
+    <input type="checkbox" id="toggle" class="visually-hidden" name="ingredients" value="Bacon">
+    <label for="ingredients">Bacon</label>
+  </fieldset>
+  <fieldset class="filter-form-fieldset">
+    <input type="checkbox" id="toggle" class="visually-hidden" name="ingredients" value="Carrots">
+    <label for="ingredients">Carrots</label>
+  </fieldset>
+  <fieldset class="filter-form-fieldset">
+    <input type="checkbox" id="toggle" class="visually-hidden" name="ingredients" value="Chickpeas">
+    <label for="ingredients">Chickpeas</label>
+  </fieldset>
+  <fieldset class="filter-form-fieldset">
+    <input type="checkbox" id="toggle" class="visually-hidden" name="ingredients" value="Tomatoes">
+    <label for="ingredients">Tomatoes</label>
+  </fieldset>
+  <fieldset class="filter-form-fieldset">
+    <input type="checkbox" id="toggle" class="visually-hidden" name="ingredients" value="Garlic">
+    <label for="ingredients">Garlic</label>
+  </fieldset>
+  <fieldset class="filter-form-fieldset">
+    <input type="checkbox" id="toggle" class="visually-hidden" name="ingredients" value="Fries">
+    <label for="ingredients">Fries</label>
+  </fieldset>
+  <fieldset class="filter-form-fieldset">
+    <input type="submit" value="Search">
+    <a class="filter-switch" href="/">Search on name of a meal</a>
+  </fieldset class="filter-form-fieldset">
+</form>
+{{ message }}
+{{#if mealFilterList}}
+  {{> filterList }}
+{{/if}}

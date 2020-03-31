@@ -1,15 +1,23 @@
-<h2>livingSpace</h2>
-<ul>
-  <li></li>
-  <li></li>
-  <li></li>
-</ul>
-<form action="/search" method="POST" class="form-example">
+<form action="/search" method="POST" onsubmit="fetch(event)">
   <fieldset>
-    <label for="city">Find city by name</label>
-    <input type="text" name="city" id="city" required>
-  </fieldset>
-  <fieldset>
+    <label for="meal">Find meal by name</label><br>
+    <input type="text" list="mealOptions" placeholder="type name of the meal" name="meal" id="meal" required>
+    <datalist id="mealOptions">
+      <option value="Chicken Couscous">
+      <option value="Mediterranean Pasta Salad">
+      <option value="Kapsalon">
+      <option value="Salmon Avocado Salad">
+      <option value="French Lentils With Garlic and Thyme">
+    </datalist>
     <input type="submit" value="Search">
   </fieldset>
+  <fieldset>
+    <a class="filter-switch" href="/filter">Filter on ingredients instead</a>
+  </fieldset>
 </form>
+{{#if message}}
+  <i>{{ message }}</i>
+{{/if}}
+{{#if mealList}}
+  {{> list }}
+{{/if}}

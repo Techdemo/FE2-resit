@@ -1,0 +1,20 @@
+<ul>
+  {{#each mealList}}
+    <li>
+      <section>
+        <header>
+          <img src={{strMealThumb}} height="275" width="275">
+          <h2>{{strMeal}}</h2>
+          <h3>Category: {{strCategory}}</h3>
+          <h4>Area: {{strArea}}</h4>
+        </header>
+        <body>
+          <p>{{strInstructions}}</p>
+        </body>
+        <footer>
+          <a class="button-primary" href={{strSource}}>Source</a>
+        </footer>
+      </section>
+    </li>
+  {{/each}}
+</ul>

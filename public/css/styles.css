@@ -1,0 +1,325 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* end of css reset */
+
+/* globals */
+html {
+  font-size: 16px;
+}
+
+:root {
+  --dark-blue: #172A3A;
+  --light-blue: #73B1F4;
+  --shade-one-blue: #6EA5EC;
+  --shade-two-blue: #4B89DA;
+  --green: #7ED321;
+}
+
+@font-face {
+  font-family: 'nunitolight';
+  src: url('../fonts/nunito-light-webfont.woff2') format('woff2'),
+      url('../fonts/nunito-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'nunitosemibold';
+  src: url('../fonts/nunito-semibold-webfont.woff2') format('woff2'),
+      url('../fonts/nunito-semibold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* .me {
+   van oud naar nieuw
+    color: #ccc;
+    color: rgba(0, 0, 0, 0.5);
+} */
+/* Houd het volgende format aan
+- blue, hex, var  */
+/* https://modernweb.com/using-css-fallback-properties-for-better-cross-browser-compatibility/ */
+/* https://css-tricks.com/css-basics-fallback-font-stacks-robust-web-typography/ */
+/* fonts */
+h1, h2 {
+  color: darkblue;
+  color: #172A3A;
+  color: var(--darkblue);
+  font-family: 'nunitosemibold';
+}
+h3, h4, p {
+  color: darkblue;
+  color: #172A3A;
+  color: var(--darkblue);
+  font-family: 'nunitolight';
+  line-height: 1.4;
+}
+h1 {
+  font-size: 50.51px;
+  font-size: 3.15rem;
+  font-size: calc(54px + (72 - 54) * ((100vw - 300px) / (1600 - 300)));
+}
+h2 {
+  font-size: 37.89px;
+  font-size: 2.36rem;
+  font-size: calc(36px + (54 - 36) * ((100vw - 300px) / (1600 - 300)));
+}
+h3 {
+  font-size: 28.43px;
+  font-size: 1.77em;
+  font-size: calc(28px + (46 - 28) * ((100vw - 300px) / (1600 - 300)));
+}
+h4 {
+  font-size: 21.32px;
+  font-size: 1.33rem;
+  font-size: calc(21px + (37 - 21) * ((100vw - 300px) / (1600 - 300)));
+}
+p {
+  font-size: 16px;
+  font-size: 1rem;
+  font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)));
+}
+
+@supports (display: flex){
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    justify-content: space-evenly;
+  }
+  fieldset {
+    display: flex;
+  }
+}
+
+li {
+  margin-top: 2.5rem;
+}
+label {
+  font-size: 21.32px;
+  font-size: 1.33rem;
+  font-size: calc(21px + (37 - 21) * ((100vw - 300px) / (1600 - 300)));
+  color: white;
+  font-family: 'nunitolight';
+}
+
+main {
+  margin: 0 auto;
+  max-width: 1080px;
+  height: 100vh;
+}
+
+section {
+  padding: 2.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+form {
+  padding: 1.75rem;
+  background-color: blue;
+  background-color: #6EA5EC;
+  background-color: var(--shade-one-blue);
+  width: 100%;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  background-color: greenyellow;
+  background-color: #7ED321;
+  background-color: var(--green);
+  font-family: 'nunitosemibold';
+  border: none;
+  color: white;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 16px;
+  font-size: 1rem;
+  font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)));
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: darkolivegreen;
+}
+
+input[type="text"] {
+  background-color: blue;
+  background-color: #6EA5EC;
+  background-color: var(--shade-one-blue);
+  border: none;
+  width: 90%;
+  border-bottom: 2px solid white;
+  color: white;
+  padding: 0.75rem;
+  font-size: 16px;
+  font-size: 1rem;
+  font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)));
+  font-family: 'nunitosemibold';
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+input[type="text"]:active {
+  background-color: blue;
+  background-color: #6EA5EC;
+  background-color: var(--shade-one-blue);
+}
+input[type="text"]:placeholder {
+  color: darkblue;
+  color: #172A3A;
+  color: var(--dark-blue);
+}
+
+input::-webkit-calendar-picker-indicator {
+	display: none;
+}
+
+.button-primary {
+  text-decoration: none;
+  color: white;
+  background-color: greenyellow;
+  background-color: #7ED321;
+  background-color: var(--green);
+  font-family: 'nunitosemibold';
+  border-radius: 5px;
+  padding: 0.75rem;
+  min-width: 425px;
+  height: 175px;
+
+  font-size: 16px;
+  font-size: 1rem;
+  font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.button-primary:hover {
+  cursor: pointer;
+  background-color: darkolivegreen;
+}
+
+.filter-switch {
+  color: white;
+  font-family: 'nunitosemibold';
+  font-size: 16px;
+  font-size: 1rem;
+  font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.filter-switch:hover {
+  color: darkblue;
+  color: #172A3A;
+  color: var(--dark-blue);
+}
+
+.page-header {
+  background-color: blue;
+  background-color: #4B89DA;
+  background-color: var(--shade-two-blue);
+  width: 100%;
+  padding: 2rem 1.25rem;
+}
+.page-header > h1 {
+  color: white;
+}
+.page-header > p {
+  color: white;
+}
+
+.button-primary {
+  text-decoration: none;
+  color: white;
+  background-color: greenyellow;
+  background-color: #7ED321;
+  background-color: var(--green);
+  font-family: 'nunitosemibold';
+  border-radius: 5px;
+  padding: 0.75rem;
+  min-width: 425px;
+  height: 175px;
+
+  font-size: 16px;
+  font-size: 1rem;
+  font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)));
+}
+
+footer {
+  width: 100%;
+  padding-top: 2rem;
+}
+.filter-form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.filter-form-fieldset {
+  display: flex;
+  width: 400px;
+}
+
+/* .visually-hidden {
+  position: absolute;
+  opacity: 0;
+} */
+
+#toggle:checked + label {
+  background-color: green;
+}
