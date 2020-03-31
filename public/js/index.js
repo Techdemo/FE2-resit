@@ -9,12 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           let lazyCard = entry.target;
-          let lazyImage = lazyCard.querySelector('img')
-
-          lazyImage.src = lazyImage.dataset.src;
           lazyCard.classList.remove("lazy");
           lazyCard.classList.add("fade-in")
-          lazyCardObserver.unobserve(lazyCard, lazyImage);
+          lazyCardObserver.unobserve(lazyCard);
         }
       });
     });

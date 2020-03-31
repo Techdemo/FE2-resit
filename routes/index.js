@@ -1,6 +1,7 @@
 const express = require('express')
 const Router = express.Router()
 const axios = require('axios')
+const helper = require('../helpers/handlebars-helper');
 
 require('dotenv').config()
 
@@ -20,12 +21,10 @@ Router.post('/', (req, res) => {
     return meals
   })
   .then((meals) => {
-
-
-    res.render('home', {
+   res.render( 'home', {
       layout: 'default',
       mealList: meals,
-      message: meals === null ? `No meals found with searchterm: ${req.body.meal}` : null
+      message: meals === null ? `No meals found with searchterm: ${req.body.meal}` : null,
     })
   })
   .catch(err => {

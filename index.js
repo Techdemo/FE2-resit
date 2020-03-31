@@ -34,7 +34,6 @@ app
     helpers: require('./helpers/handlebars-helper')
   }));
 
-
 app
   .get('/', index)
   .post('/', index)
