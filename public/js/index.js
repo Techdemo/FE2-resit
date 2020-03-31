@@ -1,3 +1,20 @@
+function myFunction() {
+  event.preventDefault();
+  const cardList = document.getElementById('cardList')
+
+
+
+
+  async function fetchMeal(query){
+    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${query}`)
+    let data = await response.json()
+    return data
+  }
+
+  fetchMeal('a')
+  .then(res => console.log(res.meals));
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   // TODO: schrijf hier een scope berichtje over.
   var lazyCards = [].slice.call(document.querySelectorAll("li.lazy"));

@@ -12,7 +12,7 @@ Router.get('/filter', (req, res) => {
 
 Router.post('/filter', (req, res) => {
   let ingredients = req.body.ingredients.toString()
-  let url = `https://www.themealdb.com/api/json/v2/${process.env.key}/filter.php?i=${ingredients}`
+  let url = `https://www.themealdb.com/api/json/v2/${process.env.KEY}/filter.php?i=${ingredients}`
 
   axios.get(url)
     .then(res => {
