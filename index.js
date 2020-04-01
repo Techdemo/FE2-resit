@@ -41,6 +41,7 @@ app
   .get('/filter', filter)
   .post('/filter', filter)
   .post('/api', api)
+  .post('/api/ingredients', api)
 
 app
   .listen(port, listening)

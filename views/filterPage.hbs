@@ -1,5 +1,4 @@
-<form class="filter-form" action="/filter" method="POST">
-{{!-- <label><input type="checkbox"> Some option</label> --}}
+<form class="filter-form" action="/filter" id="ingredientForm" method="POST" onsubmit="searchIngredients();">
   <fieldset class="filter-form-fieldset">
     <label for="ingredients">
       <input type="checkbox" id="toggle" class="visually-hidden" name="ingredients" value="Breadcrumbs">
@@ -36,6 +35,8 @@
   </fieldset class="filter-form-fieldset">
 </form>
 {{ message }}
-{{#if mealFilterList}}
-  {{> filterList }}
-{{/if}}
+<ul id="cardList">
+  {{#if mealFilterList}}
+    {{> filterList }}
+  {{/if}}
+</ul>

@@ -18,4 +18,19 @@ Router.post('/api', (req, res) => {
   })
 })
 
+Router.post('/api/ingredients', (req, res) => {
+  let ingredients = req.query.ingredients
+  let url = `https://www.themealdb.com/api/json/v2/${process.env.KEY}/filter.php?i=${ingredients}`
+
+  axios.get(url)
+    .then(response => {
+      const meals = response.data.meals
+      res.json(meals)
+    })
+    .catch(err => {
+      res.status(400).send()
+      throw new Error
+    })
+})
+
 module.exports = Router;

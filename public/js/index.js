@@ -19,19 +19,58 @@ const loader = () => {
   cardList.insertAdjacentHTML("afterbegin", markup)
 }
 
+function searchIngredients() {
+  event.preventDefault();
+  loader()
+  let formCollection = document.forms.ingredientForm
+  let formData = new FormData(formCollection).getAll('ingredients')
+  let ingredientQuery = formData.toString()
 
-function myFunction() {
+  const fetchMeals = async query => {
+    let response = await fetch(`/api/ingredients?ingredients=${query}`, { method: 'post' })
+    let data = await response.json()
+    return data
+  }
+
+  fetchMeals(ingredientQuery)
+  .then(data => {
+    sanitize()
+    if (data == null || data.length < 1) {
+      noResults('no results')
+      return null
+    } else {
+      data.forEach(meal => {
+        const markup =
+          `
+          <li class="lazy">
+            <section>
+              <header>
+                <img src=${meal.strMealThumb} height="275" width="275">
+                <h2>${meal.strMeal}</h2>
+              </header>
+            </section>
+          </li>
+       `
+        cardList.insertAdjacentHTML("beforeend", markup)
+        observeCardList()
+      })
+    }
+  }).catch(err => {
+    noResults('something went wrong on the server')
+    console.log(err)
+  })
+}
+
+function searchSingleMeal() {
   event.preventDefault();
   loader()
 
   let mealQuery = document.getElementById('meal').value;
 
- const fetchMeal = async query => {
-   let response = await fetch(`/api?meal=${query}`, { method: 'post' })
+  const fetchMeal = async query => {
+    let response = await fetch(`/api?meal=${query}`, { method: 'post' })
     let data = await response.json()
     return data
-
-// TODO: hier zou je kunnen checken of data een response heeft. Op basis daarvan geef je een succes of een false terug.
   }
 
   fetchMeal(mealQuery)
@@ -62,6 +101,7 @@ function myFunction() {
           </li>
        `
           cardList.insertAdjacentHTML("beforeend", markup)
+          observeCardList()
         })
       }
     }).catch(err => {
@@ -70,7 +110,7 @@ function myFunction() {
     })
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+function observeCardList () {
   // TODO: schrijf hier een scope berichtje over.
   var lazyCards = [].slice.call(document.querySelectorAll("li.lazy"));
 
@@ -78,10 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if ("IntersectionObserver" in window) {
     // TODO: hier kun je ook een begrip op toepassen
     let lazyCardObserver = new IntersectionObserver(function (entries, observer) {
-      console.log("joejoe")
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          console.log(entry, "is intersection")
           let lazyCard = entry.target;
           lazyCard.classList.remove("lazy");
           lazyCard.classList.add("fade-in")
@@ -96,4 +134,4 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     return null
   }
-});
+};
