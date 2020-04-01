@@ -14,6 +14,7 @@ dotenv.config();
 //import routes
 const index = require('./routes/index');
 const filter = require('./routes/filter');
+const api = require('./routes/api');
 
 app
   .use(express.static(path.join(__dirname, '/public')))
@@ -39,6 +40,7 @@ app
   .post('/', index)
   .get('/filter', filter)
   .post('/filter', filter)
+  .post('/api', api)
 
 app
   .listen(port, listening)

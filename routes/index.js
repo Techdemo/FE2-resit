@@ -9,11 +9,11 @@ Router.get('/', (req, res) => {
     layout: 'default',
   })
 })
-
-Router.post('/', (req, res) => {
+//TODO: FIX THIS
+Router.post('/search', (req, res) => {
   //TODO: Replace with search term.
   const searchTerm = req.body.meal.replace(/ /g, "_");
-  let url = `https://www.themealdb.com/api/json/v2/${process.env.KEY}/search.php?s=${req.body.meal}`
+  let url = `/api`
 
   axios.get(url)
   .then(response => {
