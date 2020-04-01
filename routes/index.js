@@ -9,11 +9,10 @@ Router.get('/', (req, res) => {
     layout: 'default',
   })
 })
-//TODO: FIX THIS
-Router.post('/search', (req, res) => {
-  //TODO: Replace with search term.
+
+Router.post('/', (req, res) => {
   const searchTerm = req.body.meal.replace(/ /g, "_");
-  let url = `/api`
+  let url = `https://www.themealdb.com/api/json/v2/${process.env.KEY}/search.php?s=${searchTerm}`
 
   axios.get(url)
   .then(response => {
@@ -25,6 +24,7 @@ Router.post('/search', (req, res) => {
       layout: 'default',
       mealList: meals,
       message: meals === null ? `No meals found with searchterm: ${req.body.meal}` : null,
+      query: req.body.meal
     })
   })
   .catch(err => {
