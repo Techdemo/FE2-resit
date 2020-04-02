@@ -15,6 +15,6 @@ module.exports = {
         page: i
       })
     }
-      return pageArr
+    return pageArr
   }
 }
