@@ -1,11 +1,8 @@
   <noscript>
     {{ numberTotalResults mealList }}
-    {{ generatePagination mealList }}
-
-    {{#each generatePagination }}
-      <p>{{ @index }}
+    {{#each pageArr}}
+      <p>{{ page }}</p>
     {{/each}}
-
   </noscript>
   {{#each mealList}}
     <li class="lazy">

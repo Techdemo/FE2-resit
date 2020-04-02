@@ -20,9 +20,23 @@ Router.post('/', (req, res) => {
     return meals
   })
   .then((meals) => {
+    let pageLimit = 8
+    let dataLength = meals.length / pageLimit
+
+    let totalPages = Math.ceil(dataLength)
+    let pageArr = []
+
+    for (let i = 1; i < totalPages; i++) {
+      pageArr.push({
+        page: i
+      })
+    }
+
+
    res.render( 'home', {
       layout: 'default',
       mealList: meals,
+      pageArr: pageArr,
       message: meals === null ? `No meals found with searchterm: ${req.body.meal}` : null,
       query: req.body.meal
     })
