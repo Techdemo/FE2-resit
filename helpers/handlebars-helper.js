@@ -3,20 +3,18 @@ module.exports = {
  numberTotalResults: function(data) {
    return `Number of results ${data.length}`
  },
- generatePagination: function(data, query) {
+ generatePagination: function(data) {
     let pageLimit = 8
     let dataLength = data.length / pageLimit
 
     let totalPages = Math.ceil(dataLength)
     let pageArr = []
 
-    for (let i = 0; i < totalPages; i++) {
-     pageArr.push({
-       page: totalPages[i],
-       query: query
-     })
+    for (let i = 1; i < totalPages; i++) {
+      pageArr.push({
+        page: i
+      })
     }
-
-    return pageArr
+      return pageArr
   }
 }
