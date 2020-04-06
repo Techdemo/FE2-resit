@@ -10,6 +10,20 @@ Router.get('/', (req, res) => {
   })
 })
 
+
+// maak een andere route waarbij de query en de page number beschikbaar zijn.
+
+    // `/api?meal=${query}`
+
+
+// Route path: /users/: userId / books /: bookId
+// Request URL: http://localhost:3000/users/34/books/8989
+// req.params: { "userId": "34", "bookId": "8989" }
+
+Router.get('/:page/:query', (req, res) => {
+  console.log("piemelsaus")
+})
+
 Router.post('/', (req, res) => {
   const searchTerm = req.body.meal.replace(/ /g, "_");
   let url = `https://www.themealdb.com/api/json/v2/${process.env.KEY}/search.php?s=${searchTerm}`
@@ -32,13 +46,16 @@ Router.post('/', (req, res) => {
       })
     }
 
+    const query = req.body.meal
+  // .slice is the function to use.
+  // res.redirect naar results met daarin de query page 1
 
    res.render( 'home', {
       layout: 'default',
       mealList: meals,
       pageArr: pageArr,
       message: meals === null ? `No meals found with searchterm: ${req.body.meal}` : null,
-      query: req.body.meal
+      query: query
     })
   })
   .catch(err => {
