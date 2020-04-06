@@ -2,7 +2,7 @@
     {{ numberTotalResults mealList }}
     {{ query }}
     {{#each pageArr}}
-      <a href="/page/{{ page }}/{{ query }}">Page Number {{ page }}</a>
+      <a href="/page/{{ page }}?:{{ query }}">Page Number {{ page }}</a>
     {{/each}}
   </noscript>
   {{#each mealList}}

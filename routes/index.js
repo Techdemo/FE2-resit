@@ -21,7 +21,7 @@ Router.get('/', (req, res) => {
 // req.params: { "userId": "34", "bookId": "8989" }
 
 Router.get('/:page/:query', (req, res) => {
-  console.log("piemelsaus")
+
 })
 
 Router.post('/', (req, res) => {
