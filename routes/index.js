@@ -21,14 +21,22 @@ Router.get('/page/:page/search/:query', (req, res) => {
   axios.get(url)
   .then(response => {
     const meals = response.data.meals
+
     return meals
   })
   .then((meals) => {
+    // console.log(meals)
+
     let mealData = paginator.Paginator(meals, page, 8)
+    console.log(mealData.next_page)
+    let next_page = Number(mealData.next_page)
+    console.log(next_page)
 
     res.render('home', {
       layout: 'default',
       per_page: mealData.per_page,
+      query: query,
+      next_page: next_page === 0 ? null : next_page + 1,
       total_pages: mealData.total_pages,
       prev_page: mealData.prev_page,
       page: mealData.page,
@@ -52,30 +60,20 @@ Router.post('/', (req, res) => {
     return meals
   })
   .then((meals) => {
-    let pageLimit = 8
-    let dataLength = meals.length / pageLimit
 
-    let totalPages = Math.ceil(dataLength)
-    let pageArr = []
+  let mealData = paginator.Paginator(meals, 1, 8)
 
-    for (let i = 1; i < totalPages; i++) {
-      pageArr.push({
-        query: req.body.meal,
-        page: i
-      })
-    }
-
-    let results = meals.slice(0, 8)
-
-  // .slice is the function to use.
-  // res.redirect naar results met daarin de query page 1
-
-  // TODO: HIER MOET JE NOG SLICEN ZODAT JE DE EERSTE 8 RESULTATEN HEBT.
    res.render( 'home', {
-      layout: 'default',
-      mealList: results,
-      pageArr: pageArr,
-      message: meals === null ? `No meals found with searchterm: ${req.body.meal}` : null
+     layout: 'default',
+     per_page: mealData.per_page,
+     query: searchTerm,
+     next_page: mealData.next_page + 1,
+     total_pages: mealData.total_pages,
+     prev_page: mealData.prev_page,
+     page: mealData.page,
+     total: mealData.total,
+     mealList: mealData.data,
+     message: meals === null ? `No meals found with searchterm: ${req.body.meal}` : null
     })
   })
   .catch(err => {

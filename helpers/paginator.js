@@ -10,7 +10,7 @@ module.exports = {
         page: page,
         per_page: per_page,
         pre_page: page - 1 ? page - 1 : null,
-        next_page: (total_pages > page) ? page + 1 : null,
+        next_page: (total_pages > page) ? page : null,
         total: meals.length,
         total_pages: total_pages,
         data: paginatedItems
