@@ -24,26 +24,12 @@ Router.get('/page/:page/search/:query', (req, res) => {
     return meals
   })
   .then((meals) => {
-    let pageLimit = 8
-    let dataLength = meals.length / pageLimit
-
-    let totalPages = Math.ceil(dataLength)
-    let pageArr = []
-
-    for (let i = 1; i < totalPages; i++) {
-      pageArr.push({
-        query: req.body.meal,
-        page: i
-      })
-    }
-
     let mealData = paginator.Paginator(meals, page, 8)
 
     res.render('home', {
       layout: 'default',
       per_page: mealData.per_page,
       total_pages: mealData.total_pages,
-      page_arr: pageArr,
       prev_page: mealData.prev_page,
       page: mealData.page,
       total: mealData.total,
