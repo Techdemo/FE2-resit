@@ -1,9 +1,10 @@
   <noscript>
-    {{ numberTotalResults mealList }}
-    {{ query }}
-    {{#each pageArr}}
-      <a href="/page/{{ page }}?:{{ query }}">Page Number {{ page }}</a>
+    {{#each page_arr}}
+      <ul>{{ page }}</ul>
     {{/each}}
+    <p>Next page: {{ next_page }}</p>
+    <p>Total pages: {{total_pages}}</p>
+    <p>Number of results: {{total}}</p>   {{!-- <a href="/page/{{ page }}/{{ query }}">Page Number {{ page }}</a> --}}
   </noscript>
   {{#each mealList}}
     <li class="lazy">

@@ -37,6 +37,7 @@ app
 
 app
   .get('/', index)
+  .get('/page/:page/search/:query', index)
   .post('/', index)
   .get('/filter', filter)
   .post('/filter', filter)
