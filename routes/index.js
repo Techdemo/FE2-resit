@@ -60,7 +60,6 @@ Router.post('/', (req, res) => {
     return meals
   })
   .then((meals) => {
-
   let mealData = paginator.Paginator(meals, 1, 8)
 
    res.render( 'home', {

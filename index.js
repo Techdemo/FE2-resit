@@ -6,7 +6,7 @@ const path = require('path')
 const compression = require('compression')
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000;
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -44,17 +44,21 @@ app
   .post('/api', api)
   .post('/api/ingredients', api)
 
-app
-  .listen(port, listening)
+app.listen(port, function () {
+  console.log('Our app is running on http://localhost:' + port);
+});
 
-function listening() {
-  console.log(`frontend server available on http://localhost:${port}`);
-    browserSync({
-      files: ['public/**/*.{js,css}'],
-      online: false,
-      open: false,
-      port: port + 1,
-      proxy: 'localhost:' + port,
-      ui: false
-    });
-}
+// app
+//   .listen(port, listening)
+
+// function listening() {
+//   console.log(`frontend server available on http://localhost:${port}`);
+//     browserSync({
+//       files: ['public/**/*.{js,css}'],
+//       online: false,
+//       open: false,
+//       port: port + 1,
+//       proxy: 'localhost:' + port,
+//       ui: false
+//     });
+// }
