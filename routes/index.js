@@ -24,8 +24,6 @@ Router.get('/page/:page/search/:query', (req, res) => {
     return meals
   })
   .then((meals) => {
-    // console.log(meals)
-
     let mealData = paginator.Paginator(meals, page, 8)
     let next_page = Number(mealData.next_page)
     let prev_page = Number(mealData.prev_page)

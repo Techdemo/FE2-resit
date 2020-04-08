@@ -68,15 +68,23 @@ It would be cool to provide some sort of autocomplete functionality, even in thi
 ### Usable
 The usable is the state in which we have acces to CSS to enhance the user experience.
 Using css to make things pretty is awesome but we still have to account for the browser of the client.
-For example; we can use Flexbox to make a layout but according to [caniuse](https://caniuse.com/#search=display%3A%20flex) there are still browsers that do not support Flexbox! That is why we have to provide the user with proper css fallbacks.
+For example; we can use Flexbox to make a layout but according to [caniuse](https://caniuse.com/#search=display%3A%20flex) there are still browsers that do not support Flexbox, rendering our layout into a total mess. That is why we have to provide the user with proper css fallbacks.
 
-### @supports
+#### @supports
+```css
+@supports (display: flex){
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+```
 
+with the @supports rule we can check if the browser of the client supports flexbox. If it does support flexbox, this block of code gets applied. If it does not, it does not get applied. This is a cool feature but we have to provide fallbacks. In this case, the `<main> </main>` contains our date of the recipes. And just to be sure, I render that data in a `<ul></ul>`. So eitherway, the data gets rendered as a vertical list. If this wasn't the case we could provide a layout with `float`.
+Thinking about semantic html really makes life more easier sometimes.
 
 #### Fonts
 I've imported the custom fonts using the @font-face css rule.
-Although the font-face rule is supported in alot of browsers, it is still advisable to provide fallback fonts. The fonts that are used in this webapp are downloaded from google fonts. After that I converted them to two file formats. `woff2` and `woff` are readable by all current browsers.
-
+Although the font-face rule is supported in alot of browsers, it is still advisable to provide fallback fonts. The fonts that are used in this webapp are downloaded from google fonts. After that I converted them to two file formats. `woff2` and `woff` are readable by all current browsers that support custom fonts.
 
 ```css
 @font-face {
@@ -100,8 +108,56 @@ h1 {
 }
 ```
 
-For colors it is also advisable to provide some fallbacks. In the example of the `h1`
+For colors it is also advisable to provide some fallbacks. The order in which we declare a css rule, determines what becomes applied to the element.
+The most modern browsers support `var(--darkblue)`. These are css variables that we declared on top of the [stylesheet](https://github.com/Techdemo/FE2-resit/blob/master/public/css/styles.css#L57). Not all browsers *..couch IE11* do support css variables. When the browser can't read the variable, it will apply the rule specified before that. If the rgb hexadecimal notation does not work, then show the user the browser's interpertation of darkblue.
 
+This is another example of how we can provide the user with css fallbacks.
+
+```css
+p {
+  font-size: 16px;
+  font-size: 1rem;
+  font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)));
+}
+```
 
 ### Pleasurable
+The pleasurable stage is acessible for the modern browsers. This is when we have acces to client side Javascript.
+
+### Hydration
+Hydration occurs when pages are server side rendered, but we change the dom by performing client side actions. This is a good way to demonstrate progressive enhancement. Alot of actions can be made more pleasurable this way.
+
+I decided to apply the concept of hydration to the fetching of the api. On my server I provided a seperate api route that only fetches the api and returns that data. The difference with the previous routes used in the app is that it doesn't return instructions a Handlebars template. Client side renders the recipe cards into our dom.
+
+```html
+<form action="/" method="POST" onsubmit="searchSingleMeal();">
+// when Javascript is client side available, the searchSingleMeal() function gets called.
+// With event.preventDefault() we prevent the page from refreshing
+```
+
+By submitting the form, the api gets called client side.
+The rest of the code is [here](https://github.com/Techdemo/FE2-resit/blob/master/public/js/index.js#L64).
+
+### Loader
+To provide the user with a pleasurable user experience while fetching the api, the clientside Jvascript can provide the user with a fancy loader animation.
+While fetching the api, we place a div element with class loader in our DOM by calling `loader()`
+```js
+const loader = () => {
+  sanitize()
+  const markup =
+    `<div class="loader">Loading..</div>`
+  cardList.insertAdjacentHTML("afterbegin", markup)
+}
+```
+The `sanitize()` function removes al html nodes in the container before the loader div gets placed. There is still text in the div because if the client's browser does not support CSS animations, it still gives us the word 'loading...'.
+In our css we have to provide prefixes for our keyframe animation. In this way, it will support all of the variants in our modern browser scale. From Chrome to Opera.
+
+```css
+  @-moz-keyframes fadein
+  @-webkit-keyframes fadein
+  @-o-keyframes fadein
+```
+
+
+
 
