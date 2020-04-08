@@ -3,6 +3,7 @@
 ##Table of contents
 1. [The assignment](#The-assignment)
 2. [My product](#My_product)
+    - [Styleguide](#Styleguide)
 3. [What is progressive enhancement](#Wath-is-progressive-enhancement)
     - [Functional and reliable](#Functional-and_reliable)
         - [Server side rendering](#Server-side-rendering)
@@ -29,6 +30,10 @@ I choose to build a webapp in which I show that I understand the principle of Pr
 
 ## My product
 I choose to make a webapp in which a user can search for a meal recipe. The user can search on ingredients or dish name. After submitting the request, the users gets acces to a list of recipes. The challenge in this assignment was to make the web app useable for every kind of user and browser. Even without css and Javascript, the core functionalities of this webapp still work.
+
+### Styleguide
+![alt text](./readmeAssets/styleguide.png "Logo Title Text 1")
+
 
 ## What is progressive enhancement
 Progressive enhancement concists two things. One, is that the user gets to use the core functionalities of your product (in my case, a webapp) regardless of the kind of browser, bandwidth and/or device. The second, is that progressive enhancement revolves about gradually improving the user experience while confirming that the client device/browser/bandwidth is capable of it.
