@@ -92,7 +92,7 @@ h1, h2 {
   color: darkblue;
   color: #172A3A;
   color: var(--darkblue);
-  font-family: 'nunitosemibold';
+  font-family: 'nunitosemibold, Roboto, system-ui, sans-serif';
 }
 h3, h4, p {
   color: darkblue;
