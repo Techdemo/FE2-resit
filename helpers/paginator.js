@@ -18,5 +18,4 @@ module.exports = {
     }
 }
 
-
 //source: https://arjunphp.com/can-paginate-array-objects-javascript/
