@@ -2,6 +2,10 @@
     {{#if next_page}}
         <a href="/page/{{ next_page }}/search/{{ query }}">Next page</a>
     {{/if}}
+    {{#if prev_page}}
+      {{ log prev_page}}
+        <a href="/page/{{ prev_page }}/search/{{ query }}">Previous page</a>
+    {{/if}}
     <p>Total pages: {{total_pages}}</p>
     <p>Number of results: {{total}}</p>   {{!-- <a href="/page/{{ page }}/{{ query }}">Page Number {{ page }}</a> --}}
   </noscript>

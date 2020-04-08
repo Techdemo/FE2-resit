@@ -28,9 +28,8 @@ Router.get('/page/:page/search/:query', (req, res) => {
     // console.log(meals)
 
     let mealData = paginator.Paginator(meals, page, 8)
-    console.log(mealData.next_page)
     let next_page = Number(mealData.next_page)
-    console.log(next_page)
+    let prev_page = Number(mealData.prev_page)
 
     res.render('home', {
       layout: 'default',
@@ -38,7 +37,7 @@ Router.get('/page/:page/search/:query', (req, res) => {
       query: query,
       next_page: next_page === 0 ? null : next_page + 1,
       total_pages: mealData.total_pages,
-      prev_page: mealData.prev_page,
+      prev_page: mealData.pre_page,
       page: mealData.page,
       total: mealData.total,
       mealList: mealData.data,
@@ -68,7 +67,7 @@ Router.post('/', (req, res) => {
      query: searchTerm,
      next_page: mealData.next_page + 1,
      total_pages: mealData.total_pages,
-     prev_page: mealData.prev_page,
+     prev_page: mealData.prev_page - 1,
      page: mealData.page,
      total: mealData.total,
      mealList: mealData.data,
