@@ -21,7 +21,6 @@ Router.get('/page/:page/search/:query', (req, res) => {
   axios.get(url)
   .then(response => {
     const meals = response.data.meals
-
     return meals
   })
   .then((meals) => {
