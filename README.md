@@ -1,6 +1,8 @@
 # FE2-resit
+![Styleguide](./readmeAssets/screen.png)
+*A progressively enhanced webapp for finding your next meal*
 
-##Table of contents
+## Table of contents
 1. [The assignment](#The-assignment)
 2. [My product](#My_product)
     - [Styleguide](#Styleguide)
@@ -24,7 +26,7 @@
 6. [my thoughts](#my-thoughts)
 7. [Sources](#sources)
 
-### The assignment
+## The assignment
 This assignment was made in response to the Frontend 2 course on CMD. The contents of the course revolved around progressive enhancement and the core foundations of the Javacript language.
 I choose to build a webapp in which I show that I understand the principle of Progressive enhancement.
 
@@ -32,7 +34,7 @@ I choose to build a webapp in which I show that I understand the principle of Pr
 I choose to make a webapp in which a user can search for a meal recipe. The user can search on ingredients or dish name. After submitting the request, the users gets acces to a list of recipes. The challenge in this assignment was to make the web app useable for every kind of user and browser. Even without css and Javascript, the core functionalities of this webapp still work.
 
 ### Styleguide
-![alt text](./readmeAssets/styleguide.png "Logo Title Text 1")
+![Styleguide](./readmeAssets/styleguide.png)
 
 
 ## What is progressive enhancement
