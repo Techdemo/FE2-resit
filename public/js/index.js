@@ -86,7 +86,7 @@ function searchSingleMeal() {
           <li class="lazy">
             <section>
               <header>
-                <img src=${meal.strMealThumb} height="275" width="275">
+                <img data-lazy=${meal.strMealThumb} height="275" width="275">
                 <h2>${meal.strMeal}</h2>
                 <h3>${meal.strCategory}</h3>
                 <h4>${meal.strArea}</h4>
@@ -101,9 +101,9 @@ function searchSingleMeal() {
           </li>
        `
           cardList.insertAdjacentHTML("beforeend", markup)
-          observeCardList()
         })
       }
+      observeCardList()
     }).catch(err => {
       noResults('something went wrong on the server')
       console.log(err)
@@ -121,8 +121,15 @@ function observeCardList () {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           let lazyCard = entry.target;
+          let img = lazyCard.querySelector('img')
+          let src = img.getAttribute('data-lazy')
+
+
+          img.setAttribute('src', src)
+
           lazyCard.classList.remove("lazy");
           lazyCard.classList.add("fade-in")
+
           lazyCardObserver.unobserve(lazyCard);
         }
       });
@@ -133,5 +140,6 @@ function observeCardList () {
     });
   } else {
     return null
+    // TODO: Write fallback for when intersection observer is not in hte window
   }
 };

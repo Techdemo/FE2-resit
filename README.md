@@ -18,6 +18,7 @@
     - [hydration](#hydration)
     - [loader](#loader)
     - [noscript](#noscript)
+    - [Infinite scrolling](#Infinite-scrolling)
     - [Lazy loading](#Lazy-loading)
 4. [Todo](#Todo)
 5. [Sources](#sources)
@@ -157,6 +158,38 @@ In our css we have to provide prefixes for our keyframe animation. In this way, 
   @-webkit-keyframes fadein
   @-o-keyframes fadein
 ```
+
+#### Noscript
+The noscript tag allows us place content in the dom that get rendered when there is no clientside Javascript available. I've placed the server side pagination logic in a noscript tag. In this way, I can let the client side javascript replace this way of pagination into something way cooler. This also is a form of hydration.
+
+#### Infinite scrolling
+By making use of the intersection observer API in the browser, we can not only lazy load all of the images of the page but also provide the user with infinite scroll.
+In this way we don't need pagination. We can check if the clients browser has the intersection observer api available in the browser window object.
+
+The Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport.
+
+```js
+ if ("IntersectionObserver" in window) {
+   // do stuff
+ } else {
+   // do other stuff when intersectionobserver is not in the window
+ }
+```
+See the code [here](https://github.com/Techdemo/FE2-resit/blob/master/public/js/index.js#L113).
+When a recipe card crosses in the users viewport, we will assign class 'fade-in' to the div. This provides a the fade-in animation when the card will get shown.
+
+#### Lazy loading
+
+
+
+
+
+
+
+
+
+
+
 
 
 
