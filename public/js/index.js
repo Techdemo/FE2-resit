@@ -123,8 +123,6 @@ function observeCardList () {
           let lazyCard = entry.target;
           let img = lazyCard.querySelector('img')
           let src = img.getAttribute('data-lazy')
-
-
           img.setAttribute('src', src)
 
           lazyCard.classList.remove("lazy");

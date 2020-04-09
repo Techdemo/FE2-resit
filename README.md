@@ -1,6 +1,6 @@
 # FE2-resit
 ![Styleguide](./readmeAssets/screen.png)
-*A progressively enhanced webapp for finding your next meal*
+*A progressively enhanced website for finding your next meal*
 
 ## Table of contents
 1. [The assignment](#The-assignment)
@@ -25,20 +25,20 @@
 
 ## The assignment
 This assignment was made in response to the Frontend 2 course on CMD. The contents of the course revolved around progressive enhancement and the core foundations of the Javacript language.
-I choose to build a webapp in which I show that I understand the principle of Progressive enhancement.
+I choose to build a website in which I show that I understand the principle of Progressive enhancement.
 
 ## My product
-I choose to make a webapp in which a user can search for a meal recipe. The user can search on ingredients or dish name. After submitting the request, the users gets acces to a list of recipes. The challenge in this assignment was to make the web app useable for every kind of user and browser. Even without css and Javascript, the core functionalities of this webapp still work.
+I choose to make a website in which a user can search for a meal recipe. The user can search on ingredients or dish name. After submitting the request, the users gets acces to a list of recipes. The challenge in this assignment was to make the web app useable for every kind of user and browser. Even without css and Javascript, the core functionalities of this website still work.
 
 ### Styleguide
 ![Styleguide](./readmeAssets/styleguide.png)
 
 ## What is progressive enhancement
-Progressive enhancement concists two things. One, is that the user gets to use the core functionalities of your product (in my case, a webapp) regardless of the kind of browser, bandwidth and/or device. The second, is that progressive enhancement revolves about gradually improving the user experience while confirming that the client device/browser/bandwidth is capable of it.
-My plan was to progressively enhance the webapplication from the ground up. So I devided the development of the product in three stages. This way of developing a webapp stands in contrast to Graceful degregation, in that it doesn't cater to the most advanced browsers first.
+Progressive enhancement concists two things. One, is that the user gets to use the core functionalities of your product (in my case, a website) regardless of the kind of browser, bandwidth and/or device. The second, is that progressive enhancement revolves about gradually improving the user experience while confirming that the client device/browser/bandwidth is capable of it.
+My plan was to progressively enhance the website from the ground up. So I devided the development of the product in three stages. This way of developing a website stands in contrast to Graceful degregation, in that it doesn't cater to the most advanced browsers first.
 
 ### Functional and reliable
-The functional and reliable stage stands for the most minimal and basic setup of the webapp. In this stage, the webapp always works, regardless of the client's device/browser/bandwidth.
+The functional and reliable stage stands for the most minimal and basic setup of the website. In this stage, the website always works, regardless of the client's device/browser/bandwidth.
 
 #### Server side rendering
 To accomplish the functional and reliable, I wrote a server with Express. The server delivered all of the data to the client using the Handlebars templating. In this way, the user only needs to have a html form that can submit some data the server. The server in return, fetches the api, formats the data and gives it back to the client. Working with a server gives you a huge amount of progressive enhancement points! No client js or css is required. Also, as a developer you are challenged to work more with native html api's instead of fancy bloated js libraries.
@@ -48,7 +48,7 @@ Sometimes when you search for a specific dish or ingredient, the api returns alo
 I've had to count the total results and divide it by the number of recipes per page.
 
 ```js
-    let total_pages = Math.ceil(meals.length / per_page)
+  let total_pages = Math.ceil(meals.length / per_page)
 ```
 The first page that gets return after the post request is ofcourse page number one. By using `.slice(0, 8)` on the array that gets returned from the api, 8 items will get returned to the client.
 `total_pages` returns the number of pages that the returned data must contain. Using that information I can render a 'next page' link in the template.
@@ -79,13 +79,14 @@ For example; we can use Flexbox to make a layout but according to [caniuse](http
     flex-direction: column;
   }
 ```
-
-with the @supports rule we can check if the browser of the client supports flexbox. If it does support flexbox, this block of code gets applied. If it does not, it does not get applied. This is a cool feature but we have to provide fallbacks. In this case, the `<main> </main>` contains our date of the recipes. And just to be sure, I render that data in a `<ul></ul>`. So eitherway, the data gets rendered as a vertical list. If this wasn't the case we could provide a layout with `float`.
+with the @supports (or also know as a feature query) rule we can check if the browser of the client supports flexbox. If it does support flexbox, this block of code gets applied. If it does not, it does not get applied. This is a cool feature but we have to provide fallbacks. In this case, the `<main> </main>` contains our date of the recipes. And just to be sure, I render that data in a `<ul></ul>`. So eitherway, the data gets rendered as a vertical list. If this wasn't the case we could provide a layout with `float`.
 Thinking about semantic html really makes life more easier sometimes.
+
+Important to know is that @supports is [not supported](https://caniuse.com/#feat=css-featurequeries) by Internet Explorer at all!
 
 #### Fonts
 I've imported the custom fonts using the @font-face css rule.
-Although the font-face rule is supported in alot of browsers, it is still advisable to provide fallback fonts. The fonts that are used in this webapp are downloaded from google fonts. After that I converted them to two file formats. `woff2` and `woff` are readable by all current browsers that support custom fonts.
+Although the font-face rule is supported in alot of browsers, it is still advisable to provide fallback fonts. The fonts that are used in this website are downloaded from google fonts. After that I converted them to two file formats. `woff2` and `woff` are readable by all current browsers that support custom fonts.
 
 ```css
 @font-face {
@@ -105,7 +106,7 @@ h1 {
   color: darkblue;
   color: #172A3A;
   color: var(--darkblue);
-  font-family: 'nunitosemibold, Roboto, system-ui, sans-serif';
+  font-family: 'nunitosemibold', Roboto, system-ui, sans-serif;
 }
 ```
 
