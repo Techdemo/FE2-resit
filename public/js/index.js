@@ -1,4 +1,4 @@
-//TODO: cardList staat in de global scope
+// global scope
 var cardList = document.getElementById('cardList')
 
 function noResults(string){
@@ -14,12 +14,6 @@ function searchIngredients() {
   let formCollection = document.forms.ingredientForm
   let formData = new FormData(formCollection).getAll('ingredients')
   let ingredientQuery = formData.toString()
-
-  const fetchMeals = async query => {
-    let response = await fetch(`/api/ingredients?ingredients=${query}`, { method: 'post' })
-    let data = await response.json()
-    return data
-  }
 
   fetchMeals(ingredientQuery)
   .then(data => {
@@ -48,6 +42,12 @@ function searchIngredients() {
     noResults('something went wrong on the server')
     console.log(err)
   })
+
+  const fetchMeals = async query => {
+    let response = await fetch(`/api/ingredients?ingredients=${query}`, { method: 'post' })
+    let data = await response.json()
+    return data
+  }
 }
 
 function searchSingleMeal() {
