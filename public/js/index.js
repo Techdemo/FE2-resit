@@ -1,5 +1,5 @@
 // global scope
-var cardList = document.getElementById('cardList')
+const cardList = document.getElementById('cardList')
 
 function noResults(string){
   sanitize()
@@ -70,26 +70,11 @@ function searchSingleMeal() {
         return null
       } else {
         data.forEach(meal => {
-          const markup =
-            `
-          <li class="lazy">
-            <section>
-              <header>
-                <img data-lazy=${meal.strMealThumb} height="275" width="275">
-                <h2>${meal.strMeal}</h2>
-                <h3>${meal.strCategory}</h3>
-                <h4>${meal.strArea}</h4>
-              </header>
-              <body>
-                <p>${meal.strInstructions}</p>
-              </body>
-              <footer>
-                <a class="button-primary" href=${meal.strSource}>Source</a>
-              </footer>
-            </section>
-          </li>
-       `
-          cardList.insertAdjacentHTML("beforeend", markup)
+          let returnMeal = new Meal(meal)
+          returnMeal.render = function () {
+            cardList.insertAdjacentHTML("beforeend", this.markup)
+          }
+          returnMeal.render()
         })
       }
       observeCardList()
@@ -100,12 +85,10 @@ function searchSingleMeal() {
 }
 
 function observeCardList () {
-  // TODO: schrijf hier een scope berichtje over.
+  // lexical scope
   var lazyCards = [].slice.call(document.querySelectorAll("li.lazy"));
 
-  //TODO: progressive enhancement, check of intersectionobserver beschikbaar is voor je browser.
   if ("IntersectionObserver" in window) {
-    // TODO: hier kun je ook een begrip op toepassen
     let lazyCardObserver = new IntersectionObserver(function (entries, observer) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -127,7 +110,7 @@ function observeCardList () {
     });
   } else {
     return null
-    // TODO: Write fallback for when intersection observer is not in hte window
+    // Je kan hier een fallback schrijven voor wanneer intersection observer niet in de window beschikbaar is.
   }
 };
 
@@ -141,4 +124,32 @@ function loader() {
 
 function sanitize(){
   cardList.innerHTML = ''
+}
+
+function Meal({ strMeal, strCategory, strMealThumb, strArea, strInstructions, strSource }) {
+  this.title = strMeal
+  this.category = strCategory
+  this.img = strMealThumb
+  this.area = strArea
+  this.instructions = strInstructions
+  this.src = strSource
+  this.markup =
+    `
+    <li class="lazy">
+      <section>
+        <header>
+          <img data-lazy=${this.img} height="275" width="275">
+          <h2>${this.title}</h2>
+          <h3>${this.category}</h3>
+          <h4>${this.area}</h4>
+        </header>
+        <body>
+          <p>${this.instructions}</p>
+        </body>
+        <footer>
+          <a class="button-primary" href=${this.source}>Source</a>
+        </footer>
+      </section>
+    </li>
+  `
 }
