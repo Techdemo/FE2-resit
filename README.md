@@ -20,8 +20,6 @@
     - [noscript](#noscript)
     - [Infinite scrolling](#Infinite-scrolling)
     - [Lazy loading](#Lazy-loading)
-4. [Todo](#Todo)
-5. [Sources](#sources)
 
 ## The assignment
 This assignment was made in response to the Frontend 2 course on CMD. The contents of the course revolved around progressive enhancement and the core foundations of the Javacript language.
@@ -180,6 +178,18 @@ See the code [here](https://github.com/Techdemo/FE2-resit/blob/master/public/js/
 When a recipe card crosses in the users viewport, we will assign class 'fade-in' to the div. This provides a the fade-in animation when the card will get shown.
 
 #### Lazy loading
+In combination with infinite scrolling we can create a lazy loading effect. I assigned a custom data attribute to every image. Instead of `src` we use `data-lazy`.
+When src is used, the browser will load the image immediately. Eventually, when the image becomes visible in the viewport we can read the data-lazy attribute and replace it with src attribute.
+```js
+//...
+if (entry.isIntersecting) {
+  let lazyCard = entry.target;
+  let img = lazyCard.querySelector('img')
+  let src = img.getAttribute('data-lazy')
+  img.setAttribute('src', src)
+}
+//...
+```
 
 
 
