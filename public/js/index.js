@@ -11,6 +11,12 @@ function noResults(string){
 function searchIngredients() {
   event.preventDefault();
   loader()
+  const fetchMeals = async query => {
+    let response = await fetch(`/api/ingredients?ingredients=${query}`, { method: 'post' })
+    let data = await response.json()
+    return data
+  }
+
   let formCollection = document.forms.ingredientForm
   let formData = new FormData(formCollection).getAll('ingredients')
   let ingredientQuery = formData.toString()
@@ -42,25 +48,19 @@ function searchIngredients() {
     noResults('something went wrong on the server')
     console.log(err)
   })
-
-  const fetchMeals = async query => {
-    let response = await fetch(`/api/ingredients?ingredients=${query}`, { method: 'post' })
-    let data = await response.json()
-    return data
-  }
 }
 
 function searchSingleMeal() {
   event.preventDefault();
   loader()
 
-  let mealQuery = document.getElementById('meal').value;
-
   const fetchMeal = async query => {
     let response = await fetch(`/api?meal=${query}`, { method: 'post' })
     let data = await response.json()
     return data
   }
+
+  let mealQuery = document.getElementById('meal').value;
 
   fetchMeal(mealQuery)
     .then(data => {
