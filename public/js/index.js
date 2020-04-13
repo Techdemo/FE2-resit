@@ -1,21 +1,10 @@
 //TODO: cardList staat in de global scope
 var cardList = document.getElementById('cardList')
 
-const sanitize = () => {
-  cardList.innerHTML = ''
-}
-
-const noResults = (string) => {
+function noResults(string){
   sanitize()
     const markup =
     `<h4>${string}</h4`
-  cardList.insertAdjacentHTML("afterbegin", markup)
-}
-
-const loader = () => {
-  sanitize()
-  const markup =
-    `<div class="loader">Loading..</div>`
   cardList.insertAdjacentHTML("afterbegin", markup)
 }
 
@@ -141,3 +130,15 @@ function observeCardList () {
     // TODO: Write fallback for when intersection observer is not in hte window
   }
 };
+
+// hoisting
+function loader() {
+  sanitize()
+  const markup =
+    `<div class="loader">Loading..</div>`
+  cardList.insertAdjacentHTML("afterbegin", markup)
+}
+
+function sanitize(){
+  cardList.innerHTML = ''
+}
