@@ -34,7 +34,7 @@ function searchIngredients() {
           <li class="lazy">
             <section>
               <header>
-                <img src=${meal.strMealThumb} height="275" width="275">
+                <img data-lazy=${meal.strMealThumb} height="275" width="275">
                 <h2>${meal.strMeal}</h2>
               </header>
             </section>
