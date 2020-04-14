@@ -224,6 +224,7 @@ Here is a small list of tasks I can work on to further optimize this website.
 * [ ] - add ingredients to url parameters on the filter page.
 * [ ] - get a good grasp of the concept of query parameters.
 * [ ] - edit all urls to contain the correct url query parameters
+* [ ] - some sources for recipes give a null response. Filter out these resource links.
 
 ### Sources
 * Coyier, C. (2018, 21 februari). Css basics: fallback font stacks.  Geraadpleegd op 6 mei 2020, van https://css-tricks.com/css-basics-fallback-font-stacks-robust-web-typography/+

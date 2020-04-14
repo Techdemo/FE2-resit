@@ -133,6 +133,7 @@ function Meal({ strMeal, strCategory, strMealThumb, strArea, strInstructions, st
   this.area = strArea
   this.instructions = strInstructions
   this.src = strSource
+
   this.markup =
     `
     <li class="lazy">
@@ -147,7 +148,7 @@ function Meal({ strMeal, strCategory, strMealThumb, strArea, strInstructions, st
           <p>${this.instructions}</p>
         </body>
         <footer>
-          <a class="button-primary" href=${this.source}>Source</a>
+          <a class="button-primary" href=${this.src}>Source</a>
         </footer>
       </section>
     </li>
