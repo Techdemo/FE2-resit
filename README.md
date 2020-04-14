@@ -14,13 +14,15 @@
   - [Useable](#usable)
     - [@supports](#@supports)
     - [Fonts and colors](#Fonts)
+    - [Checkbox styling](#Checkbox-styling)
   - [Pleasurable](#Pleasurable)
     - [hydration](#hydration)
     - [loader](#loader)
     - [noscript](#noscript)
     - [Infinite scrolling](#Infinite-scrolling)
     - [Lazy loading](#Lazy-loading)
-
+  4. [Todo](#Todo)
+  5. [Sources](#Sources)
 ## The assignment
 This assignment was made in response to the Frontend 2 course on CMD. The contents of the course revolved around progressive enhancement and the core foundations of the Javacript language.
 I choose to build a website in which I show that I understand the principle of Progressive enhancement.
@@ -82,7 +84,7 @@ Thinking about semantic html really makes life more easier sometimes.
 
 Important to know is that @supports is [not supported](https://caniuse.com/#feat=css-featurequeries) by Internet Explorer at all!
 
-#### Fonts
+#### Fonts and colors
 I've imported the custom fonts using the @font-face css rule.
 Although the font-face rule is supported in alot of browsers, it is still advisable to provide fallback fonts. The fonts that are used in this website are downloaded from google fonts. After that I converted them to two file formats. `woff2` and `woff` are readable by all current browsers that support custom fonts.
 
@@ -120,6 +122,31 @@ p {
   font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)));
 }
 ```
+
+#### Checkbox styling
+By applying css we can also enhance the user experience of our checkboxes.
+![Styleguide](./readmeAssets/screen3.png)
+
+This is a screenshot of how our form looks without css. It would be cool if we can hide the checkboxes and only enhance our labels.
+We can do this with the psuedo-selector `:checked`.
+
+First we make the input not visible
+```css
+  input[type="checkbox"] {
+    opacity: 0;
+  }
+
+  // when the input is checked, we style the label
+  input[type="checkbox"]:checked + label {
+    background-color: darkblue;
+    background-color: #172A3A;
+    background-color: var(--dark-blue);
+    border-radius: 5px;
+  }
+```
+And this is our endresult:
+![Styleguide](./readmeAssets/screen2.png)
+
 
 ### Pleasurable
 The pleasurable stage is acessible for the modern browsers. This is when we have acces to client side Javascript.
@@ -191,8 +218,16 @@ if (entry.isIntersecting) {
 //...
 ```
 
+### Todo
+Here is a small list of tasks I can work on to further optimize this website.
 
+* [ ] - add ingredients to url parameters on the filter page.
+* [ ] - get a good grasp of the concept of query parameters.
+* [ ] - edit all urls to contain the correct url query parameters
 
+### Sources
+* Coyier, C. (2018, 21 februari). Css basics: fallback font stacks.  Geraadpleegd op 6 mei 2020, van https://css-tricks.com/css-basics-fallback-font-stacks-robust-web-typography/+
+* Mehrabani, A. M. (2016, 14 november). Using CSS Fallback Properties for Better Cross-browser Compatibility.  Geraadpleegd op 6 april 2020, van https://modernweb.com/using-css-fallback-properties-for-better-cross-browser-compatibility/
 
 
 
